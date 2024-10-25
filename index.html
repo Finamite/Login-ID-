@@ -11,32 +11,47 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #e0f7fa;
+            margin: 0;
         }
         .login-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333333;
         }
         input[type="text"], input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 18px;
         }
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #5cb85c;
+            padding: 15px;
+            background-color: #0288d1;
             border: none;
             border-radius: 5px;
             color: white;
+            font-size: 18px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #4cae4c;
+            background-color: #0277bd;
+        }
+        #error-message {
+            color: red;
+            margin-top: 15px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -49,7 +64,7 @@
         <input type="password" id="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
-    <p id="error-message" style="color:red;"></p>
+    <p id="error-message"></p>
 </div>
 
 <script>
@@ -57,7 +72,7 @@
         event.preventDefault(); // Prevent form submission
         
         // Define your login credentials
-        const username = "finamite123"; // Replace with your username
+        const username = "Finamite123"; // Replace with your username
         const password = "12345678"; // Replace with your password
         
         // Get input values
