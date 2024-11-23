@@ -14,15 +14,30 @@
             overflow: hidden;
         }
 
-        /* Gradient Background */
+        /* Background Images */
         .background-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, #9fc5e8, #33AEFF); /* Gradient color */
+            overflow: hidden;
             z-index: -1;
+        }
+
+        .background-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: blur(8px);
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background-container img.hidden {
+            opacity: 0;
         }
 
         /* Login Container */
@@ -131,14 +146,17 @@
     </style>
 </head>
 <body>
-    <!-- Background Gradient -->
-    <div class="background-container"></div>
+    <!-- Background Images -->
+    <div class="background-container">
+        <img src="https://wallpapers.com/images/featured/nature-2ygv7ssy2k0lxlzu.jpg" alt="Background 1" class="background-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY0dgqFzrRWxHMYL8UvVvpWeG2wpEgR_xfyQ&s" alt="Background 2" class="background-image hidden">
+        <img src="https://img.freepik.com/premium-photo/nature-wallpaper-desktop-laptop-landscap_1255871-2910.jpg" alt="Background 3" class="background-image hidden">
+    </div>
 
     <!-- Login Form -->
     <div class="login-container">
         <div class="login-box">
             <div class="logo">
-                <!-- Replace 'logo.png' with your logo file -->
                 <img src="logo.png" alt="Finamite Logo">
             </div>
             <h2>Login to your account</h2>
@@ -155,7 +173,7 @@
                 </div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
-            <p id="error-message" class="error-message"></p> <!-- Error message will show here -->
+            <p id="error-message" class="error-message"></p>
             <footer>
                 <p>2024 © Finamite - CRM Software.</p>
             </footer>
@@ -183,6 +201,19 @@
                 document.getElementById("error-message").innerText = "Invalid username or password.";
             }
         });
+
+        // Background Image Slider
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".background-container img");
+        const totalImages = images.length;
+
+        function changeBackgroundImage() {
+            images[currentImageIndex].classList.add("hidden");
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].classList.remove("hidden");
+        }
+
+        setInterval(changeBackgroundImage, 5000); // Change image every 5 seconds
     </script>
 </body>
 </html>
